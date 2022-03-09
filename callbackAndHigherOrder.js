@@ -6,27 +6,25 @@
 */
 
 // CODE HERE
-
+const multiply = (num1, num2, callback) => {
+  callback(num1 * num2)
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
-
-
+multiply(4, 3, (answer) => {
+  console.log("The answer is " + answer) //should console.log 12
+})
 
 ////////// PROBLEMS 2 - 6 //////////
 
 // The names array will be used in problems 2 - 6.
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
+var names = ["Tyler", "Cahlan", "Ryan", "Colt", "Tyler", "Blaine", "Cahlan"]
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -35,18 +33,18 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// CODE HERE 
-
+// CODE HERE
+const first = (arr, callback) => {
+  callback(arr[0])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
-
-
+first(names, (firstName) => {
+  console.log("The first name in names is " + firstName)
+})
 
 ////////// PROBLEM 3 //////////
 
@@ -56,17 +54,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+const last = (arr, callback) => {
+  callback(arr.length - 1)
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
-
-
+last(names, (lastName) => {
+  console.log("The last name in names is " + lastName)
+})
 
 ////////// PROBLEM 4 //////////
 
@@ -77,22 +75,27 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-// CODE HERE 
-
+// CODE HERE
+const contains = (arr, name, callback) => {
+  if (arr.indexOf(name) === -1) {
+    // if the name is not in the array (index -1)
+    callback(false)
+  } else {
+    callback(true)
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
-
-
+contains(names, "Colt", (result) => {
+  if (result === true) {
+    console.log("Colt is in the array")
+  } else {
+    console.log("Colt is not in the array")
+  }
+})
 
 ////////// PROBLEM 5 //////////
 
@@ -103,7 +106,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+const unique = (arr, callback) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; i++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, 1) // remove the duplicate
+      }
+    }
+  }
+}
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
